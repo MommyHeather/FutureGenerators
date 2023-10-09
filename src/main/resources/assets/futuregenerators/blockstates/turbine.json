@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "futuregenerators:block/turbine" },
+        "facing=south": { "model": "futuregenerators:block/turbine", "y": 180 },
+        "facing=west":  { "model": "futuregenerators:block/turbine", "y": 270 },
+        "facing=east":  { "model": "futuregenerators:block/turbine", "y": 90 }
+    }
+}
