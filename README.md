@@ -1,4 +1,4 @@
-# Futuregeneratords
+# Futuregenerators
 
 This mod was commissioned by `clown_95x`. It is for Minecraft 1.20, on Forge.
 
