@@ -36,6 +36,8 @@ public class FutureGenerators
         Items.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         Tiles.TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(Items::onCreativeModeTabRegister);;
+
     }
 
     @SubscribeEvent
