@@ -1,9 +1,6 @@
 package co.uk.mommyheather.futuregenerators.ui;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
-import net.minecraft.world.flag.FeatureFlag;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.registries.DeferredRegister;
