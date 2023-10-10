@@ -4,6 +4,7 @@ import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import co.uk.mommyheather.futuregenerators.util.FutureGeneratorsEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -130,5 +131,28 @@ public class TileTurbine extends BlockEntity {
                 battery.setEnergy(battery.getEnergyStored() - energy);
             }
         }
+    }
+
+    
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.put("tank", tank.writeToNBT(new CompoundTag()));
+        tag.put("battery", battery.serializeNBT());
+
+        tag.putInt("speed", speed);
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        if (tag.contains("tank")) {
+            tank.readFromNBT(tag.getCompound("tank"));
+        }
+        if (tag.contains("battery")) {
+            battery.deserializeNBT(tag.get("battery"));
+        }
+        
+        speed = tag.getInt("speed");
     }
 }
