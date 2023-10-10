@@ -25,5 +25,9 @@ public class FutureGeneratorsEnergyStorage extends EnergyStorage{
         this.capacity = capacity;
     }
 
+    public void setEnergy(int i) {
+        this.energy = i;
+    }
+
     
 }
