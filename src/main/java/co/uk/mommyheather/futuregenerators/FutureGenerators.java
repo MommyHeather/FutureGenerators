@@ -6,6 +6,7 @@ import co.uk.mommyheather.futuregenerators.blocks.Blocks;
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import co.uk.mommyheather.futuregenerators.items.Items;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
+import co.uk.mommyheather.futuregenerators.ui.Menus;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,6 +36,7 @@ public class FutureGenerators
         Blocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         Items.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         Tiles.TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        Menus.MENUS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(Items::onCreativeModeTabRegister);;
 
