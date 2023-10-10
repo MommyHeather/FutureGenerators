@@ -28,6 +28,8 @@ public class TileTurbine extends BlockEntity {
     private LazyOptional<IFluidHandler> lazyTank;
     private LazyOptional<IEnergyStorage> lazyBattery;
 
+    private int ticks = 0;
+
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
@@ -67,6 +69,7 @@ public class TileTurbine extends BlockEntity {
         if (level.isClientSide) return;
         TileTurbine turbine = (TileTurbine) be;
 
+
         if (!turbine.ticked) {
             turbine.tank.setCapacity(FutureGeneratorsConfig.SERVER.turbineWaterCapacity.get());
     
@@ -98,5 +101,34 @@ public class TileTurbine extends BlockEntity {
         }
         turbine.battery.receiveEnergy(turbine.speed * FutureGeneratorsConfig.SERVER.turbineFeRatio.get(), false);
 
+        turbine.ticks++;
+        if (turbine.ticks % 6 == 0 || turbine.speed > 0) {
+            turbine.eject();
+        }
+    }
+
+
+    public void eject() {
+        
+        // eject
+        for (Direction direction : Direction.values()) {
+            if (battery.getEnergyStored() <=0) {
+                return;
+            }
+            BlockEntity target = level.getBlockEntity(getBlockPos().relative(direction));
+                if (target == null) { 
+                continue;
+            }
+            LazyOptional<IEnergyStorage> energyOptional = target.getCapability(ForgeCapabilities.ENERGY, direction.getOpposite());
+            if (energyOptional == null || !energyOptional.isPresent()) { 
+                continue;
+            }
+            IEnergyStorage storage = energyOptional.resolve().get();
+            int energy = storage.receiveEnergy(battery.getEnergyStored(), true);
+            if (energy != 0) {
+                storage.receiveEnergy(energy, false);
+                battery.setEnergy(battery.getEnergyStored() - energy);
+            }
+        }
     }
 }
