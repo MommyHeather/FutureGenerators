@@ -24,7 +24,7 @@ public class FutureGeneratorsMenu extends AbstractContainerMenu {
         super(type, windowId);
         this.pos = pos;
         this.verificationBlock = verificationBlock;
-        layoutPlayerInventorySlots(player.getInventory(), 10, 70);
+        layoutPlayerInventorySlots(player.getInventory(), 8, 96);
     }
 
     private int addSlotRange(Container playerInventory, int index, int x, int y, int amount, int dx) {
