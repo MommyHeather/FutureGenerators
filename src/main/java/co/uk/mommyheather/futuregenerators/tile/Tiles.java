@@ -13,4 +13,5 @@ public class Tiles {
 
 
     public static final RegistryObject<BlockEntityType<TileTurbine>> turbine = TILES.register("turbine", () -> BlockEntityType.Builder.of(TileTurbine::new, Blocks.turbine.get()).build(null));
+    public static final RegistryObject<BlockEntityType<TileLightningGenerator>> lightningGenerator = TILES.register("lightning_generator", () -> BlockEntityType.Builder.of(TileLightningGenerator::new, Blocks.lightningGenerator.get()).build(null));
 }

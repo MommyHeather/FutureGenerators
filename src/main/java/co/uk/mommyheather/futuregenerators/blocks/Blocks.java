@@ -13,6 +13,7 @@ public class Blocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FutureGenerators.MODID);
 
     public static final RegistryObject<Block> turbine = BLOCKS.register("turbine", () -> new BlockTurbine(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<Block> lightningGenerator = BLOCKS.register("lightning_generator", () -> new BlockLightningGenerator(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
 
 

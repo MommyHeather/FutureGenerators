@@ -24,8 +24,10 @@ public class Items {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FutureGenerators.MODID);
 
     
-    public static final RegistryObject<BlockItem> turbine = Items.ITEMS.register("turbine", () -> new BlockItem(Blocks.turbine.get(), new Properties().stacksTo(64)));
+    public static final RegistryObject<BlockItem> turbine = ITEMS.register("turbine", () -> new BlockItem(Blocks.turbine.get(), new Properties().stacksTo(64)));
+    public static final RegistryObject<BlockItem> lightningGenerator = ITEMS.register("lightning_generator", () -> new BlockItem(Blocks.lightningGenerator.get(), new Properties().stacksTo(64)));
 
+    public static final RegistryObject<Item> lightningCharge = ITEMS.register("lightning_charge", () -> new Item(new Properties().stacksTo(1).durability(500)));
     
 
     public static void onCreativeModeTabRegister(RegisterEvent event) {
@@ -34,6 +36,9 @@ public class Items {
                 .title(Component.translatable("futuregenerators.creativetab"))
                 .displayItems((params, output) -> {
                     output.accept(new ItemStack(turbine.get()));
+                    output.accept(new ItemStack(lightningGenerator.get()));
+
+                    output.accept(new ItemStack(lightningCharge.get()));
                 })
                 .build());
 
