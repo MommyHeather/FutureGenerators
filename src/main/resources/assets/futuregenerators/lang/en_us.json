@@ -1,7 +1,14 @@
 { 
     "block.futuregenerators.turbine" : "Water Turbine",
+    "block.futuregenerators.lightning_generator" : "Lightning Generator",
+
+    "item.futuregenerators.lightning_charge" : "Lightning Charge",
 
     "futuregenerators.creativetab" : "Future Generators",
 
-    "futuregenerators.ui.turbine" : "Water Turbine"
+    "futuregenerators.ui.turbine" : "Water Turbine",
+    "futuregenerators.ui.lightning_generator" : "Lightning Generator",
+
+    "futuregenerators.ui.speed" : "Speed: %1$s mb/t",
+    "futuregenerators.ui.production" : "Producing: %1$s FE/t"
 }
