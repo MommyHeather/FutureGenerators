@@ -57,8 +57,15 @@ public class TileTurbine extends BlockEntity {
 
         tank = new FluidTank(0, (stack) -> {
             return stack.getFluid().isSame(Fluids.WATER);
-        });
+        }) {
+            @Override
+            protected void onContentsChanged()
+            {
+                setChanged();
+            }
+        };
 
+        //marking as dirty with the energy storage isn't hugely required.
         battery = new FutureGeneratorsEnergyStorage(0);
 
         lazyTank = LazyOptional.of(() -> tank);
