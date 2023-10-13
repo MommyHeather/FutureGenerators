@@ -24,6 +24,13 @@ public class FutureGeneratorsConfig {
         public final ForgeConfigSpec.ConfigValue<Integer> turbineWaterCapacity;
         public final ForgeConfigSpec.ConfigValue<Integer> turbinePowerCapacity;
 
+        public final ForgeConfigSpec.ConfigValue<Integer> lightningGeneratorConsumption;
+        public final ForgeConfigSpec.ConfigValue<Integer> lightningGeneratorCapacity;
+
+        public final ForgeConfigSpec.ConfigValue<Integer> lightningDynamoProduction;
+        public final ForgeConfigSpec.ConfigValue<Integer> lightningDynamoCapacity;
+        public final ForgeConfigSpec.ConfigValue<Integer> lightningDynamoMaxGenerators;
+
         public Server(ForgeConfigSpec.Builder builder) {
 
             builder.push("Turbine");
@@ -33,6 +40,21 @@ public class FutureGeneratorsConfig {
             turbineSpinupTime = builder.comment("How long the turbine takes to spin up from still to max speed, in seconds.\nMinimum speed gain is 1 per tick / 20 per second!").defineInRange("turbineSpinupTime", 60, 0, Integer.MAX_VALUE);
             turbineWaterCapacity = builder.comment("How much water the turbine can hold.").defineInRange("turbineWaterCapacity", 10000, 1000, Integer.MAX_VALUE);
             turbinePowerCapacity = builder.comment("How much power the turbine can hold.").defineInRange("turbinePowerCapacity", 10000, 1000, Integer.MAX_VALUE);
+
+            builder.pop();
+
+            builder.push("LightningGenerator");
+
+            lightningGeneratorConsumption = builder.comment("The power consumption of the lightning generator.").defineInRange("lightningGeneratorConsumption", 1000, 1, Integer.MAX_VALUE);
+            lightningGeneratorCapacity = builder.comment("The lightning generator's power capacity.").defineInRange("lightningGeneratorCapacity", 100000, 1, Integer.MAX_VALUE);
+            builder.pop();
+
+            
+            builder.push("LightningDynamo");
+
+            lightningDynamoProduction = builder.comment("How much power each dynamo produces per connected lightning generator.").defineInRange("lightningDynamoProduction", 10000, 1, Integer.MAX_VALUE);
+            lightningDynamoCapacity = builder.comment("How much power the lightning dynamo can store.").defineInRange("lightningDynamoCapacity", 10000000, 1, Integer.MAX_VALUE);
+            lightningDynamoMaxGenerators = builder.comment("How many lightning generators a single dynamo can connect to.").defineInRange("lightningDynamoMaxGenerators", 4, 1, 4);
 
             builder.pop();
 

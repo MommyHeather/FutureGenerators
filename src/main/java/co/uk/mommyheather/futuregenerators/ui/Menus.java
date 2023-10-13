@@ -15,4 +15,8 @@ public class Menus {
         return IForgeMenuType.create((window, inv, data) -> new TurbineMenu(window, inv.player, data.readBlockPos()));
     });
 
+    public static final RegistryObject<MenuType<LightningGeneratorMenu>> lightningGenerator = MENUS.register("lightning_generator", () -> {
+        return IForgeMenuType.create((window, inv, data) -> new LightningGeneratorMenu(window, inv.player, data.readBlockPos()));
+    });
+
 }

@@ -24,7 +24,6 @@ public class FutureGeneratorsMenu extends AbstractContainerMenu {
         super(type, windowId);
         this.pos = pos;
         this.verificationBlock = verificationBlock;
-        layoutPlayerInventorySlots(player.getInventory(), 8, 96);
     }
 
     private int addSlotRange(Container playerInventory, int index, int x, int y, int amount, int dx) {
@@ -44,7 +43,7 @@ public class FutureGeneratorsMenu extends AbstractContainerMenu {
         return index;
     }
 
-    private void layoutPlayerInventorySlots(Container playerInventory, int leftCol, int topRow) {
+    protected void layoutPlayerInventorySlots(Container playerInventory, int leftCol, int topRow) {
         // Player inventory
         addSlotBox(playerInventory, 9, leftCol, topRow, 9, 18, 3, 18);
 
@@ -65,7 +64,7 @@ public class FutureGeneratorsMenu extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
             }
-            if (!this.moveItemStackTo(stack, SLOT_INPUT, SLOT_INPUT+1, false)) {
+            if (!this.moveItemStackTo(stack, 0, SLOT_INPUT, false)) {
                 if (index < 27 + SLOT_COUNT) {
                     if (!this.moveItemStackTo(stack, 27 + SLOT_COUNT, 36 + SLOT_COUNT, false)) {
                         return ItemStack.EMPTY;

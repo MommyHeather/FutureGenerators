@@ -1,6 +1,7 @@
 package co.uk.mommyheather.futuregenerators.util;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
+import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorScreen;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
 import co.uk.mommyheather.futuregenerators.ui.TurbineScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -17,6 +18,7 @@ public class ClientSetup {
     public static void init(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             MenuScreens.register(Menus.turbine.get(), TurbineScreen::new);
+            MenuScreens.register(Menus.lightningGenerator.get(), LightningGeneratorScreen::new);
         });
     }
 

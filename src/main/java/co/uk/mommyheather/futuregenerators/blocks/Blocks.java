@@ -14,7 +14,7 @@ public class Blocks {
 
     public static final RegistryObject<Block> turbine = BLOCKS.register("turbine", () -> new BlockTurbine(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
     public static final RegistryObject<Block> lightningGenerator = BLOCKS.register("lightning_generator", () -> new BlockLightningGenerator(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-
+    public static final RegistryObject<Block> lightningDynamo = BLOCKS.register("lightning_dynamo", () -> new BlockLightningDynamo(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
 
 }

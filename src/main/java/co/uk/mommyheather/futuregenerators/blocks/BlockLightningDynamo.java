@@ -4,10 +4,8 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import co.uk.mommyheather.futuregenerators.tile.TileLightningGenerator;
-import co.uk.mommyheather.futuregenerators.tile.TileTurbine;
+import co.uk.mommyheather.futuregenerators.tile.TileLightningDynamo;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
-import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorMenu;
 import co.uk.mommyheather.futuregenerators.ui.TurbineMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,39 +31,50 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
-public class BlockLightningGenerator extends Block implements EntityBlock {
+public class BlockLightningDynamo extends Block implements EntityBlock {
     
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-    public BlockLightningGenerator(Properties p_49795_) {
+    public BlockLightningDynamo(Properties p_49795_) {
         super(p_49795_);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new TileLightningGenerator(pos, state);
+        return new TileLightningDynamo(pos, state);
     }
     
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return type == Tiles.lightningGenerator.get() ? TileLightningGenerator::tick : null;
+        return type == Tiles.lightningDynamo.get() ? TileLightningDynamo::tick : null;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
+        state.add(FACING);
+    }
+    
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext p_196258_1_) {
+        return this.defaultBlockState().setValue(FACING, p_196258_1_.getHorizontalDirection().getOpposite());
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult trace) {
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof TileLightningGenerator) {
+            if (be instanceof TileLightningDynamo) {
                 MenuProvider containerProvider = new MenuProvider() {
                     @Override
                     public Component getDisplayName() {
-                        return Component.translatable("futuregenerators.ui.lightning_generator");
+                        return Component.translatable("futuregenerators.ui.turbine");
                     }
 
                     @Override
                     public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player playerEntity) {
-                        return new LightningGeneratorMenu(windowId, playerEntity, pos);
+                        return new TurbineMenu(windowId, playerEntity, pos);
                     }
                 };
                 NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());
@@ -74,16 +83,15 @@ public class BlockLightningGenerator extends Block implements EntityBlock {
         return InteractionResult.SUCCESS;
     }
 
-
     @Deprecated
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos p_60513_, boolean p_60514_) {
         if (level.isClientSide) return;
 
-        Optional<TileLightningGenerator> generatorOptional = level.getBlockEntity(pos, Tiles.lightningGenerator.get());
+        Optional<TileLightningDynamo> dynamoOptional = level.getBlockEntity(pos, Tiles.lightningDynamo.get());
 
-        if (generatorOptional.isPresent()) {
-            TileLightningGenerator generator = generatorOptional.get();
-            generator.checkNeighbours();
+        if (dynamoOptional.isPresent()) {
+            TileLightningDynamo dynamo = dynamoOptional.get();
+            dynamo.checkNeighbours();
         }
     }
 
