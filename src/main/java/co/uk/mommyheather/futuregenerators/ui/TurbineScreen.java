@@ -13,7 +13,7 @@ public class TurbineScreen extends AbstractContainerScreen<TurbineMenu> {
     private static final int ENERGY_LEFT = 136;//142;
     private static final int ENERGY_WIDTH = 12;//24;
     private static final int ENERGY_TOP = 24;//20;
-    private static final int ENERGY_HEIGHT = 36;//60;
+    private static final int ENERGY_HEIGHT = 37;//60;
 
     private static final int WATER_LEFT = 27;//10;
     private static final int WATER_WIDTH = 14;//24;
