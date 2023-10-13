@@ -12,21 +12,21 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Inventory;
 
 public class LightningGeneratorScreen extends AbstractContainerScreen<LightningGeneratorMenu> {
-    
-    private static final int ENERGY_LEFT = 142;
-    private static final int ENERGY_WIDTH = 24;
-    private static final int ENERGY_TOP = 20;
-    private static final int ENERGY_HEIGHT = 60;
+        
+    private static final int ENERGY_LEFT = 136;//142;
+    private static final int ENERGY_WIDTH = 12;//24;
+    private static final int ENERGY_TOP = 24;//20;
+    private static final int ENERGY_HEIGHT = 37;//60;
 
 
 
-    private final ResourceLocation GUI = new ResourceLocation(FutureGenerators.MODID, "textures/gui/background.png");
+    private final ResourceLocation GUI = new ResourceLocation(FutureGenerators.MODID, "textures/gui/lightning_generator.png");
     private final ResourceLocation EXTRAS = new ResourceLocation(FutureGenerators.MODID, "textures/gui/extras.png");
 
     public LightningGeneratorScreen(LightningGeneratorMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         this.imageWidth = 176;
-        this.imageHeight = 190;
+       // this.imageHeight = 190;
         this.inventoryLabelY = this.imageHeight - 105;
     }
     
@@ -39,11 +39,13 @@ public class LightningGeneratorScreen extends AbstractContainerScreen<LightningG
 
         int power = menu.power;
         int p = ENERGY_HEIGHT - (int) ((power / (float) menu.powerMax) * ENERGY_HEIGHT);
-        graphics.fill(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xff330000);
-        graphics.fillGradient(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP + p, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xffff0000, 0xff000000);
+
+        //graphics.fill(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xff330000);
+        //graphics.fillGradient(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP + p, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xffff0000, 0xff000000);
 
         
-        graphics.blit(EXTRAS, leftPos + 99, topPos + ((ENERGY_TOP + ENERGY_HEIGHT) / 2) - 16, 0, 60, 36, 54);
+        //graphics.blit(EXTRAS, leftPos + 99, topPos + ((ENERGY_TOP + ENERGY_HEIGHT) / 2) - 16, 0, 60, 36, 54);
+        graphics.blit(GUI, leftPos + ENERGY_LEFT, topPos + ENERGY_TOP + p, 176, p+14, ENERGY_WIDTH, ENERGY_HEIGHT - p);
 
         Component rod = menu.hasRod ? Component.translatable("futuregenerators.ui.has_rod") : Component.translatable("futuregenerators.ui.no_rod")
             .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(16724539)));
@@ -75,5 +77,10 @@ public class LightningGeneratorScreen extends AbstractContainerScreen<LightningG
         }
     }
 
+    @Override
+    protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+        graphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
+        //graphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 4210752, false);
+    }
     
 }

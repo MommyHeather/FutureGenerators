@@ -25,16 +25,16 @@ public class LightningGeneratorMenu extends FutureGeneratorsMenu {
             SLOT_COUNT = 6;
             SLOT_INPUT = 6;
 
-            addSlot(new SlotItemHandler(generator.items, 0, 100, 25));
-            addSlot(new SlotItemHandler(generator.items, 1, 118, 25));
-            addSlot(new SlotItemHandler(generator.items, 2, 100, 43));
-            addSlot(new SlotItemHandler(generator.items, 3, 118, 43));
-            addSlot(new SlotItemHandler(generator.items, 4, 100, 60));
-            addSlot(new SlotItemHandler(generator.items, 5, 118, 60));
+            addSlot(new SlotItemHandler(generator.items, 0, 97, 17));
+            addSlot(new SlotItemHandler(generator.items, 1, 115, 17));
+            addSlot(new SlotItemHandler(generator.items, 2, 97, 35));
+            addSlot(new SlotItemHandler(generator.items, 3, 115, 35));
+            addSlot(new SlotItemHandler(generator.items, 4, 97, 53));
+            addSlot(new SlotItemHandler(generator.items, 5, 115, 53));
 
 
             
-            layoutPlayerInventorySlots(player.getInventory(), 8, 96);
+            layoutPlayerInventorySlots(player.getInventory(), 8, 84);
 
             //power - needs to be bitshifted as dataslots are short capped
             addDataSlot(new DataSlot() {
