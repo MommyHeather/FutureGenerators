@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "futuregenerators:block/lightning_dynamo" },
+        "facing=south": { "model": "futuregenerators:block/lightning_dynamo", "y": 180 },
+        "facing=west":  { "model": "futuregenerators:block/lightning_dynamo", "y": 270 },
+        "facing=east":  { "model": "futuregenerators:block/lightning_dynamo", "y": 90 }
+    }
+}

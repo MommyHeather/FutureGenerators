@@ -1,0 +1,29 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "LIL",
+        "RSR",
+        "BBB"
+    ],
+    "key": {
+        "L": {
+            "item": "minecraft:lightning_rod"
+        },
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "S": {
+            "item": "minecraft:nether_star"
+        },
+        "B": {
+            "item": "minecraft:iron_block"
+        }
+    },
+    "result": {
+        "item": "futuregenerators:lightning_dynamo",
+        "count": 1
+    }
+}
