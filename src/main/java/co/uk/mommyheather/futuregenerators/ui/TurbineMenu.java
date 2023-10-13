@@ -22,7 +22,7 @@ public class TurbineMenu extends FutureGeneratorsMenu {
 
         BlockEntity be = player.level().getBlockEntity(pos);
         
-        layoutPlayerInventorySlots(player.getInventory(), 8, 96);
+        layoutPlayerInventorySlots(player.getInventory(), 8, 84);
 
         if (be instanceof TileTurbine) {
             TileTurbine turbine = (TileTurbine) be;
