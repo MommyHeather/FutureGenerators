@@ -61,7 +61,7 @@ public class TurbineScreen extends AbstractContainerScreen<TurbineMenu> {
 
         Component speed = Component.translatable("futuregenerators.ui.speed", menu.speed);
 
-        Component producing = Component.translatable("futuregenerators.ui.production", (menu.speed * FutureGeneratorsConfig.SERVER.turbineFeRatio.get()));
+        Component producing = Component.translatable("futuregenerators.ui.production", String.format("%,d", menu.speed * FutureGeneratorsConfig.SERVER.turbineFeRatio.get()));
         
 
         graphics.drawCenteredString(font, speed, this.width / 2, topPos + ENERGY_TOP + ENERGY_HEIGHT, 16777215);
