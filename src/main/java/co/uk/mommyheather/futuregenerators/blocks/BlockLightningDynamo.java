@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import co.uk.mommyheather.futuregenerators.tile.TileLightningDynamo;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
+import co.uk.mommyheather.futuregenerators.ui.LightningDynamoMenu;
 import co.uk.mommyheather.futuregenerators.ui.TurbineMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -69,12 +70,12 @@ public class BlockLightningDynamo extends Block implements EntityBlock {
                 MenuProvider containerProvider = new MenuProvider() {
                     @Override
                     public Component getDisplayName() {
-                        return Component.translatable("futuregenerators.ui.turbine");
+                        return Component.translatable("futuregenerators.ui.lightning_dynamo");
                     }
 
                     @Override
                     public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player playerEntity) {
-                        return new TurbineMenu(windowId, playerEntity, pos);
+                        return new LightningDynamoMenu(windowId, playerEntity, pos);
                     }
                 };
                 NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());

@@ -15,5 +15,6 @@
     "futuregenerators.ui.production" : "Producing: %1$s FE/t",
     "futuregenerators.ui.has_rod" : "Lightning Rod present.",
     "futuregenerators.ui.no_rod" : "No Lightning Rod!",
-    "futuregenerators.ui.dynamos" : "Dynamos: %1$s"
+    "futuregenerators.ui.dynamos" : "Dynamos: %1$s",
+    "futuregenerators.ui.generators" : "Generators: %1$s"
 }

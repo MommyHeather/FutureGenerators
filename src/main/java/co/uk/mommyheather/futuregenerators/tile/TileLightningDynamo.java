@@ -33,9 +33,6 @@ public class TileLightningDynamo extends BlockEntity {
 
     private int ticks = 0;
 
-    public boolean hasRod = false;
-    public int dynamos = 0;
-
     public HashMap<Direction, TileLightningGenerator> generators = new HashMap<>();
 
 
@@ -57,7 +54,13 @@ public class TileLightningDynamo extends BlockEntity {
     public TileLightningDynamo(BlockPos p_155229_, BlockState p_155230_) {
         super(Tiles.lightningDynamo.get(), p_155229_, p_155230_);
 
-        battery = new FutureGeneratorsEnergyStorage(0, 0, Integer.MAX_VALUE);
+        battery = new FutureGeneratorsEnergyStorage(0, 0, Integer.MAX_VALUE) {
+            @Override
+            public void onContentsChanged() {
+                setChanged();
+            }
+            
+        };
 
         lazyBattery = LazyOptional.of(() -> battery);
     }
@@ -80,7 +83,8 @@ public class TileLightningDynamo extends BlockEntity {
                 if (generator.isRunning()) {
                     i++;
                     if (i > FutureGeneratorsConfig.SERVER.lightningDynamoMaxGenerators.get()) break;
-                    dynamo.battery.setEnergy(dynamo.battery.getEnergyStored() + FutureGeneratorsConfig.SERVER.lightningDynamoProduction.get());
+                    dynamo.battery.setEnergy( Math.min(FutureGeneratorsConfig.SERVER.lightningDynamoCapacity.get(),
+                        dynamo.battery.getEnergyStored() + FutureGeneratorsConfig.SERVER.lightningDynamoProduction.get()));
                 }
             }
         }

@@ -1,6 +1,8 @@
 package co.uk.mommyheather.futuregenerators.util;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
+import co.uk.mommyheather.futuregenerators.ui.LightningDynamoMenu;
+import co.uk.mommyheather.futuregenerators.ui.LightningDynamoScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorScreen;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
 import co.uk.mommyheather.futuregenerators.ui.TurbineScreen;
@@ -19,6 +21,7 @@ public class ClientSetup {
         event.enqueueWork(() -> {
             MenuScreens.register(Menus.turbine.get(), TurbineScreen::new);
             MenuScreens.register(Menus.lightningGenerator.get(), LightningGeneratorScreen::new);
+            MenuScreens.register(Menus.lightningDynamo.get(), LightningDynamoScreen::new);
         });
     }
 
