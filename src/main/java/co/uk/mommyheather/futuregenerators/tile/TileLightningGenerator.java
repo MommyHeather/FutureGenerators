@@ -74,7 +74,11 @@ public class TileLightningGenerator extends BlockEntity {
             }
         };
 
-        battery = new FutureGeneratorsEnergyStorage(9, Integer.MAX_VALUE, 0);
+        battery = new FutureGeneratorsEnergyStorage(9, Integer.MAX_VALUE, 0){
+            @Override
+            public void onContentsChanged() {
+                setChanged();
+            }};
 
         lazyBattery = LazyOptional.of(() -> battery);
         lazyItems = LazyOptional.of(() -> items);

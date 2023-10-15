@@ -65,8 +65,14 @@ public class TileTurbine extends BlockEntity {
             }
         };
 
-        //marking as dirty with the energy storage isn't hugely required.
-        battery = new FutureGeneratorsEnergyStorage(0);
+        battery = new FutureGeneratorsEnergyStorage(0) {
+
+            @Override
+            public void onContentsChanged() {
+                setChanged();
+            }
+            
+        };
 
         lazyTank = LazyOptional.of(() -> tank);
         lazyBattery = LazyOptional.of(() -> battery);
@@ -119,7 +125,9 @@ public class TileTurbine extends BlockEntity {
     public void eject() {
         
         // eject
-        for (Direction direction : Direction.values()) {
+        for (Direction direction : new Direction[] {
+            Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN
+        }) {
             if (battery.getEnergyStored() <=0) {
                 return;
             }

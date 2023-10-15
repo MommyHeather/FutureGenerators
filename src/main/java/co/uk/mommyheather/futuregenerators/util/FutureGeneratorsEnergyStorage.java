@@ -25,14 +25,14 @@ public abstract class FutureGeneratorsEnergyStorage extends EnergyStorage{
     @Override
     public int receiveEnergy(int maxReceive, boolean simulate)
     {
-        setChanged();
+        onContentsChanged();
         return super.receiveEnergy(maxReceive, simulate);
     }
 
     @Override
     public int extractEnergy(int maxExtract, boolean simulate)
     {
-        setChanged();
+        onContentsChanged();
         return super.extractEnergy(maxExtract, simulate);
     }
 
@@ -44,7 +44,7 @@ public abstract class FutureGeneratorsEnergyStorage extends EnergyStorage{
         this.energy = i;
     }
 
-    public abstract void setChanged();
+    public abstract void onContentsChanged();
 
     
 }
