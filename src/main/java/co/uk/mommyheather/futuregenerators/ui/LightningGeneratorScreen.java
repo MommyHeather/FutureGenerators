@@ -1,7 +1,6 @@
 package co.uk.mommyheather.futuregenerators.ui;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
-import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;

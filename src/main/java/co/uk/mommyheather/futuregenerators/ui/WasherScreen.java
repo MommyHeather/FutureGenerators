@@ -1,7 +1,6 @@
 package co.uk.mommyheather.futuregenerators.ui;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
-import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -43,11 +42,6 @@ public class WasherScreen extends AbstractContainerScreen<WasherMenu> {
         int p = ENERGY_HEIGHT - (int) ((power / (float) menu.powerMax) * ENERGY_HEIGHT);
         int w = WATER_HEIGHT - (int) ((water / (float) menu.waterMax) * WATER_HEIGHT);
 
-
-
-        //graphics.fill(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xff330000);
-        //graphics.fillGradient(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP + p, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xffff0000, 0xff000000);
-        
         graphics.blit(GUI, leftPos + ENERGY_LEFT, topPos + ENERGY_TOP + p, 176, p+14, ENERGY_WIDTH, ENERGY_HEIGHT - p);
         graphics.blit(GUI, leftPos + WATER_LEFT, topPos + WATER_TOP + w, 176, w+51, WATER_WIDTH, WATER_HEIGHT - w);
         

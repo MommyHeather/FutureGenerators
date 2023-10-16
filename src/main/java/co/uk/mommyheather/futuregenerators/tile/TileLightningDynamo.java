@@ -4,16 +4,11 @@ import java.util.HashMap;
 
 import co.uk.mommyheather.futuregenerators.blocks.Blocks;
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
-import co.uk.mommyheather.futuregenerators.items.Items;
 import co.uk.mommyheather.futuregenerators.util.FutureGeneratorsEnergyStorage;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;

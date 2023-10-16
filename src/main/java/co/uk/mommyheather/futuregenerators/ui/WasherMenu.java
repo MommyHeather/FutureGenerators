@@ -1,7 +1,6 @@
 package co.uk.mommyheather.futuregenerators.ui;
 
 import co.uk.mommyheather.futuregenerators.blocks.Blocks;
-import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import co.uk.mommyheather.futuregenerators.tile.TileWasher;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

@@ -5,10 +5,7 @@ import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Inventory;
 
 public class LightningDynamoScreen extends AbstractContainerScreen<LightningDynamoMenu> {

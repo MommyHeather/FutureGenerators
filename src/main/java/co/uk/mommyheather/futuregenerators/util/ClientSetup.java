@@ -1,7 +1,6 @@
 package co.uk.mommyheather.futuregenerators.util;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
-import co.uk.mommyheather.futuregenerators.ui.LightningDynamoMenu;
 import co.uk.mommyheather.futuregenerators.ui.LightningDynamoScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorScreen;
 import co.uk.mommyheather.futuregenerators.ui.Menus;

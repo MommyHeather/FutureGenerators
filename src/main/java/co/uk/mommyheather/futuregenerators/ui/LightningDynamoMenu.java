@@ -2,13 +2,11 @@ package co.uk.mommyheather.futuregenerators.ui;
 
 import co.uk.mommyheather.futuregenerators.blocks.Blocks;
 import co.uk.mommyheather.futuregenerators.tile.TileLightningDynamo;
-import co.uk.mommyheather.futuregenerators.tile.TileLightningGenerator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class LightningDynamoMenu extends FutureGeneratorsMenu {
 

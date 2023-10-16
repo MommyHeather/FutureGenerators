@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import co.uk.mommyheather.futuregenerators.tile.TileLightningDynamo;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
 import co.uk.mommyheather.futuregenerators.ui.LightningDynamoMenu;
-import co.uk.mommyheather.futuregenerators.ui.TurbineMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
