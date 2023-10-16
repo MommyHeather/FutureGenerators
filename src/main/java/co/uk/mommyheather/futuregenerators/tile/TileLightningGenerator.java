@@ -72,6 +72,12 @@ public class TileLightningGenerator extends BlockEntity {
             {
                 return stack.is(Items.lightningCharge.get());
             }
+            
+            @Override
+            public void onContentsChanged(int slot) {
+                setChanged();
+            }
+
         };
 
         battery = new FutureGeneratorsEnergyStorage(9, Integer.MAX_VALUE, 0){
