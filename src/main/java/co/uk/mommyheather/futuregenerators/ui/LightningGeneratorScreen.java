@@ -21,8 +21,6 @@ public class LightningGeneratorScreen extends AbstractContainerScreen<LightningG
 
 
     private final ResourceLocation GUI = new ResourceLocation(FutureGenerators.MODID, "textures/gui/lightning_generator.png");
-    private final ResourceLocation EXTRAS = new ResourceLocation(FutureGenerators.MODID, "textures/gui/extras.png");
-
     public LightningGeneratorScreen(LightningGeneratorMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         this.imageWidth = 176;
@@ -40,17 +38,11 @@ public class LightningGeneratorScreen extends AbstractContainerScreen<LightningG
         int power = menu.power;
         int p = ENERGY_HEIGHT - (int) ((power / (float) menu.powerMax) * ENERGY_HEIGHT);
 
-        //graphics.fill(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xff330000);
-        //graphics.fillGradient(leftPos + ENERGY_LEFT, topPos + ENERGY_TOP + p, leftPos + ENERGY_LEFT + ENERGY_WIDTH, topPos + ENERGY_TOP + ENERGY_HEIGHT, 0xffff0000, 0xff000000);
-
-        
-        //graphics.blit(EXTRAS, leftPos + 99, topPos + ((ENERGY_TOP + ENERGY_HEIGHT) / 2) - 16, 0, 60, 36, 54);
         graphics.blit(GUI, leftPos + ENERGY_LEFT, topPos + ENERGY_TOP + p, 176, p+14, ENERGY_WIDTH, ENERGY_HEIGHT - p);
 
         Component rod = menu.hasRod ? Component.translatable("futuregenerators.ui.has_rod") : Component.translatable("futuregenerators.ui.no_rod")
             .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(16724539)));
 
-        //Component producing = Component.translatable("futuregenerators.ui.production", (menu.speed * FutureGeneratorsConfig.SERVER.turbineFeRatio.get()));
         int height = topPos + ENERGY_TOP + 3;
         for (FormattedCharSequence line : font.split(rod, 90)) {
             graphics.drawString(font, line, this.leftPos + 5, height, 16777215);
@@ -60,8 +52,7 @@ public class LightningGeneratorScreen extends AbstractContainerScreen<LightningG
         Component dynamos = Component.translatable("futuregenerators.ui.dynamos", menu.dynamos);
 
         graphics.drawString(font, dynamos, this.leftPos + 5, height + 3, 16777215);
-        //graphics.drawCenteredString(font, producing, this.width / 2, topPos + ENERGY_HEIGHT + ENERGY_TOP - 10, 16777215);
-
+       
     }
 
     @Override

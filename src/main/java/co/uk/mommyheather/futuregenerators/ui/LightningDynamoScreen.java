@@ -21,7 +21,6 @@ public class LightningDynamoScreen extends AbstractContainerScreen<LightningDyna
 
 
     private final ResourceLocation GUI = new ResourceLocation(FutureGenerators.MODID, "textures/gui/lightning_dynamo.png");
-    //private final ResourceLocation EXTRAS = new ResourceLocation(FutureGenerators.MODID, "textures/gui/extras.png");
 
     public LightningDynamoScreen(LightningDynamoMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
