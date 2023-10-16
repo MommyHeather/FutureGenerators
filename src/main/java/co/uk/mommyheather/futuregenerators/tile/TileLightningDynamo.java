@@ -116,7 +116,9 @@ public class TileLightningDynamo extends BlockEntity {
     public void eject() {
         
         // eject
-        for (Direction direction : Direction.values()) {
+        for (Direction direction : new Direction[] {
+            Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN
+        }) {
             if (battery.getEnergyStored() <=0) {
                 return;
             }
