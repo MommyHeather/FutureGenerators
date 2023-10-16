@@ -30,6 +30,12 @@ public class FutureGeneratorsConfig {
         public final ForgeConfigSpec.ConfigValue<Integer> lightningDynamoProduction;
         public final ForgeConfigSpec.ConfigValue<Integer> lightningDynamoCapacity;
         public final ForgeConfigSpec.ConfigValue<Integer> lightningDynamoMaxGenerators;
+        
+        public final ForgeConfigSpec.ConfigValue<Integer> washerPowerCapacity;
+        public final ForgeConfigSpec.ConfigValue<Integer> washerPowerConsumption;
+        public final ForgeConfigSpec.ConfigValue<Integer> washerWaterCapacity;
+        public final ForgeConfigSpec.ConfigValue<Integer> washerWaterConsumption;
+        public final ForgeConfigSpec.ConfigValue<Integer> washerProcessTime;
 
         public Server(ForgeConfigSpec.Builder builder) {
 
@@ -55,6 +61,17 @@ public class FutureGeneratorsConfig {
             lightningDynamoProduction = builder.comment("How much power each dynamo produces per connected lightning generator.").defineInRange("lightningDynamoProduction", 10000, 1, Integer.MAX_VALUE);
             lightningDynamoCapacity = builder.comment("How much power the lightning dynamo can store.").defineInRange("lightningDynamoCapacity", 10000000, 1, Integer.MAX_VALUE);
             lightningDynamoMaxGenerators = builder.comment("How many lightning generators a single dynamo can connect to.").defineInRange("lightningDynamoMaxGenerators", 4, 1, 4);
+
+            builder.pop();
+
+            
+            builder.push("Washer");
+
+            washerPowerCapacity = builder.comment("How much power the washer can hold.").defineInRange("washerPowerCapacity", 10000, 1000, Integer.MAX_VALUE);
+            washerPowerConsumption = builder.comment("How much power is consumed per cobblestone 'washed'.").defineInRange("washerPowerConsumption", 1000, 1, Integer.MAX_VALUE);
+            washerWaterCapacity = builder.comment("How much water the washer can hold.").defineInRange("washerWaterCapacity", 10000, 1000, Integer.MAX_VALUE);
+            washerWaterConsumption = builder.comment("How much water is consumed per cobblestone 'washed'.").defineInRange("washerWaterConsumption", 250, 1, Integer.MAX_VALUE);
+            washerProcessTime = builder.comment("How many ticks it takes to 'wash' a single block of cobblestone.").defineInRange("washerProcessTime", 5, 1, Integer.MAX_VALUE);
 
             builder.pop();
 

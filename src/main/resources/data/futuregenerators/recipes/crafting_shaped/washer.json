@@ -1,0 +1,29 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "III",
+        "WFW",
+        "CRC"
+    ],
+    "key": {
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        },
+        "F": {
+            "item": "minecraft:furnace"
+        },
+        "C": {
+            "item": "minecraft:cobblestone"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "result": {
+        "item": "futuregenerators:washer",
+        "count": 1
+    }
+}

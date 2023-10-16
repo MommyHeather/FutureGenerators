@@ -6,6 +6,7 @@ import co.uk.mommyheather.futuregenerators.ui.LightningDynamoScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorScreen;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
 import co.uk.mommyheather.futuregenerators.ui.TurbineScreen;
+import co.uk.mommyheather.futuregenerators.ui.WasherScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,6 +23,7 @@ public class ClientSetup {
             MenuScreens.register(Menus.turbine.get(), TurbineScreen::new);
             MenuScreens.register(Menus.lightningGenerator.get(), LightningGeneratorScreen::new);
             MenuScreens.register(Menus.lightningDynamo.get(), LightningDynamoScreen::new);
+            MenuScreens.register(Menus.washer.get(), WasherScreen::new);
         });
     }
 

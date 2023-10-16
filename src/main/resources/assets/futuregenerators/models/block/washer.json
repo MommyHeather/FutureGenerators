@@ -1,0 +1,20 @@
+{
+    "parent": "block/cube",
+	"display": {
+        "firstperson_righthand": {
+            "rotation": [ 0, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+    "textures": {
+        "up": "futuregenerators:block/washer_top",
+        "down": "futuregenerators:block/washer_down",
+        "side": "futuregenerators:block/washer_side",
+        "north": "futuregenerators:block/washer_front",
+        "east": "#side",
+        "south": "#side",
+        "west": "#side",
+        "particle": "#north"
+    }
+}

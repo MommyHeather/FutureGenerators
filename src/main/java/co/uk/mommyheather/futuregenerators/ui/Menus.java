@@ -23,4 +23,8 @@ public class Menus {
         return IForgeMenuType.create((window, inv, data) -> new LightningDynamoMenu(window, inv.player, data.readBlockPos()));
     });
 
+    public static final RegistryObject<MenuType<WasherMenu>> washer = MENUS.register("washer", () -> {
+        return IForgeMenuType.create((window, inv, data) -> new WasherMenu(window, inv.player, data.readBlockPos()));
+    });
+
 }

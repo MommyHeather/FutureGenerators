@@ -2,6 +2,7 @@
     "block.futuregenerators.turbine" : "Water Turbine",
     "block.futuregenerators.lightning_generator" : "Lightning Generator",
     "block.futuregenerators.lightning_dynamo" : "Lightning Dynamo",
+    "block.futuregenerators.washer" : "Washer",
 
     "item.futuregenerators.lightning_charge" : "Lightning Charge",
 
@@ -10,6 +11,7 @@
     "futuregenerators.ui.turbine" : "Water Turbine",
     "futuregenerators.ui.lightning_generator" : "Lightning Generator",
     "futuregenerators.ui.lightning_dynamo" : "Lightning Dynamo",
+    "futuregenerators.ui.washer" : "Washer",
 
     "futuregenerators.ui.speed" : "Speed: %1$s mb/t",
     "futuregenerators.ui.production" : "Producing: %1$s FE/t",
