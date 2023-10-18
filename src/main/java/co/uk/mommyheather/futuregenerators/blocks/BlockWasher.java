@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -79,6 +80,18 @@ public class BlockWasher extends Block implements EntityBlock {
             }
         }
         return InteractionResult.SUCCESS;
+    }
+
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean p_51542_) {
+        if (!state.is(oldState.getBlock())) {
+            TileWasher washer = (TileWasher) level.getBlockEntity(pos);
+            for (int i=0; i<washer.items.getSlots();i++) {
+                if (!washer.items.getStackInSlot(i).isEmpty()) {
+                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), washer.items.getStackInSlot(i));
+                }
+            }
+        }
+        super.onRemove(state, level, pos, oldState, p_51542_);
     }
 
 }

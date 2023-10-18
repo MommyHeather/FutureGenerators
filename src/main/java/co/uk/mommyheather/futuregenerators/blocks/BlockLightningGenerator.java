@@ -8,14 +8,17 @@ import co.uk.mommyheather.futuregenerators.tile.TileLightningGenerator;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
 import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -82,4 +85,16 @@ public class BlockLightningGenerator extends Block implements EntityBlock {
         }
     }
 
+
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean p_51542_) {
+        if (!state.is(oldState.getBlock())) {
+            TileLightningGenerator generator = (TileLightningGenerator) level.getBlockEntity(pos);
+            for (int i=0; i<generator.items.getSlots();i++) {
+                if (!generator.items.getStackInSlot(i).isEmpty()) {
+                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), generator.items.getStackInSlot(i));
+                }
+            }
+        }
+        super.onRemove(state, level, pos, oldState, p_51542_);
+    }
 }

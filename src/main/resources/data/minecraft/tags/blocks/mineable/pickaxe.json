@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "futuregenerators:turbine",
+        "futuregenerators:washer",
+        "futuregenerators:lightning_dynamo",
+        "futuregenerators:lightning_generator"
+    ]
+  }

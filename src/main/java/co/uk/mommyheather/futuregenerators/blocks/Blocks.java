@@ -12,10 +12,10 @@ public class Blocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FutureGenerators.MODID);
 
-    public static final RegistryObject<Block> turbine = BLOCKS.register("turbine", () -> new BlockTurbine(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-    public static final RegistryObject<Block> lightningGenerator = BLOCKS.register("lightning_generator", () -> new BlockLightningGenerator(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-    public static final RegistryObject<Block> lightningDynamo = BLOCKS.register("lightning_dynamo", () -> new BlockLightningDynamo(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-    public static final RegistryObject<Block> washer = BLOCKS.register("washer", () -> new BlockWasher(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<Block> turbine = BLOCKS.register("turbine", () -> new BlockTurbine(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.5F)));
+    public static final RegistryObject<Block> lightningGenerator = BLOCKS.register("lightning_generator", () -> new BlockLightningGenerator(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.5F)));
+    public static final RegistryObject<Block> lightningDynamo = BLOCKS.register("lightning_dynamo", () -> new BlockLightningDynamo(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.5F)));
+    public static final RegistryObject<Block> washer = BLOCKS.register("washer", () -> new BlockWasher(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(2.5F)));
 
 
 }
