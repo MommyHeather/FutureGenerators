@@ -1,6 +1,7 @@
 package co.uk.mommyheather.futuregenerators.tile;
 
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
+import co.uk.mommyheather.futuregenerators.fluids.Fluids;
 import co.uk.mommyheather.futuregenerators.util.FutureGeneratorsEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -8,7 +9,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -56,7 +56,7 @@ public class TileTurbine extends BlockEntity {
         speed = 0;
 
         tank = new FluidTank(0, (stack) -> {
-            return stack.getFluid().isSame(Fluids.WATER);
+            return stack.getFluid().isSame(Fluids.HOT_WATER.get());
         }) {
             @Override
             protected void onContentsChanged()
