@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 
 import co.uk.mommyheather.futuregenerators.blocks.Blocks;
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
+import co.uk.mommyheather.futuregenerators.fluids.Fluids;
 import co.uk.mommyheather.futuregenerators.items.Items;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
@@ -32,12 +33,14 @@ public class FutureGenerators
     {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        Fluids.FLUID_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        Fluids.FLUIDS.register(FMLJavaModLoadingContext.get().getModEventBus());
         Blocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         Items.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         Tiles.TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
         Menus.MENUS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(Items::onCreativeModeTabRegister);;
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(Items::onCreativeModeTabRegister);
 
     }
 

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "futuregenerators:block/hot_water"
+        }
+    }
+}

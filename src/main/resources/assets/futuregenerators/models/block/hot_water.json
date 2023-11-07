@@ -1,0 +1,6 @@
+{
+    "textures": {
+        "all": "futuregenerators:block/hot_water_still",
+        "particle": "futuregenerators:block/hot_water_still"
+    }
+}
