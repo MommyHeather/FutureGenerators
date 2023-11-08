@@ -1,0 +1,20 @@
+{
+    "parent": "block/cube",
+	"display": {
+        "firstperson_righthand": {
+            "rotation": [ 0, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+    "textures": {
+        "up": "futuregenerators:block/boiler_top",
+        "down": "futuregenerators:block/boiler_down",
+        "side": "futuregenerators:block/boiler_side",
+        "north": "futuregenerators:block/boiler_front",
+        "east": "#side",
+        "south": "#side",
+        "west": "#side",
+        "particle": "#north"
+    }
+}
