@@ -37,7 +37,19 @@ public class FutureGeneratorsConfig {
         public final ForgeConfigSpec.ConfigValue<Integer> washerWaterConsumption;
         public final ForgeConfigSpec.ConfigValue<Integer> washerProcessTime;
 
+        public final ForgeConfigSpec.ConfigValue<Integer> boilerWaterCapacity;
+        public final ForgeConfigSpec.ConfigValue<Integer> boilerHeatingRate;
+
         public Server(ForgeConfigSpec.Builder builder) {
+
+            
+            builder.push("Boiler");
+
+            boilerWaterCapacity = builder.comment("The water capacity of the boiler. The hot water capacity is 2x this.").defineInRange("boilerWaterCapacity", 8000, Integer.MIN_VALUE, Integer.MAX_VALUE / 2);
+            boilerHeatingRate = builder.comment("How much water the boiler converts into hot water each tick whilst running.").defineInRange("boilerHeatingRate", 100, 1, Integer.MAX_VALUE);
+            
+            builder.pop();
+
 
             builder.push("Turbine");
 
@@ -74,6 +86,7 @@ public class FutureGeneratorsConfig {
             washerProcessTime = builder.comment("How many ticks it takes to 'wash' a single block of cobblestone.").defineInRange("washerProcessTime", 5, 1, Integer.MAX_VALUE);
 
             builder.pop();
+
 
         }
 
