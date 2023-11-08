@@ -3,7 +3,6 @@ package co.uk.mommyheather.futuregenerators.blocks;
 import javax.annotation.Nullable;
 
 import co.uk.mommyheather.futuregenerators.tile.TileBoiler;
-import co.uk.mommyheather.futuregenerators.tile.TileBoiler;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
 import co.uk.mommyheather.futuregenerators.ui.BoilerMenu;
 import net.minecraft.core.BlockPos;

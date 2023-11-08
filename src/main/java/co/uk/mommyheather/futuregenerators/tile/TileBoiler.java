@@ -1,18 +1,15 @@
 package co.uk.mommyheather.futuregenerators.tile;
 
-import java.util.HashMap;
 import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
 
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
-import co.uk.mommyheather.futuregenerators.util.FutureGeneratorsEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -22,7 +19,6 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
@@ -122,6 +118,10 @@ public class TileBoiler extends BlockEntity {
             boiler.tank.fillOutput(new FluidStack(co.uk.mommyheather.futuregenerators.fluids.Fluids.HOT_WATER.get(), FutureGeneratorsConfig.SERVER.boilerHeatingRate.get()));
         }
 
+        if (boiler.ticks % 6 == 0 || boiler.fuelRemaining > 0) {
+            boiler.eject();
+        }
+
     }
     
     @Override
@@ -147,6 +147,35 @@ public class TileBoiler extends BlockEntity {
             this.fuelRemaining = tag.getInt("burnTime");
         }
     }
+
+    
+
+    public void eject() {
+        
+        // eject
+        for (Direction direction : new Direction[] {
+            Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN
+        }) {
+            if (tank.outTank.getFluidAmount() <=0) {
+                return;
+            }
+            BlockEntity target = level.getBlockEntity(getBlockPos().relative(direction));
+                if (target == null) { 
+                continue;
+            }
+            LazyOptional<IFluidHandler> fluidOptional = target.getCapability(ForgeCapabilities.FLUID_HANDLER, direction.getOpposite());
+            if (fluidOptional == null || !fluidOptional.isPresent()) { 
+                continue;
+            }
+            IFluidHandler storage = fluidOptional.resolve().get();
+            int amount = storage.fill(tank.outTank.getFluid(), FluidAction.SIMULATE);
+            if (amount != 0) {
+                amount = storage.fill(tank.outTank.getFluid(), FluidAction.EXECUTE);
+                tank.drain(amount, FluidAction.EXECUTE);
+            }
+        }
+    }
+
 
 
 
