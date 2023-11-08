@@ -9,7 +9,7 @@ plugins {
 group = mod_group_id
 
 base {
-    archivesName = 'FutureGenerators'
+    archivesName = 'HydroCraft'
 }
 
 task copyVSCodeResources (dependsOn: 'processResources', type: Copy) {
@@ -192,7 +192,7 @@ tasks.withType(ProcessResources).configureEach {
 tasks.named('jar', Jar).configure {
     manifest {
         attributes([
-                "Specification-Title"     : "futuregenerators",
+                "Specification-Title"     : "hydrocraft",
                 "Specification-Vendor"    : "mommyheather",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
