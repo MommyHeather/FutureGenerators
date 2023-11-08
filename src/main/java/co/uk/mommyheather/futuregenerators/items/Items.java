@@ -2,6 +2,7 @@ package co.uk.mommyheather.futuregenerators.items;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
 import co.uk.mommyheather.futuregenerators.blocks.Blocks;
+import co.uk.mommyheather.futuregenerators.fluids.Fluids;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -28,6 +29,7 @@ public class Items {
     public static final RegistryObject<BlockItem> lightningGenerator = ITEMS.register("lightning_generator", () -> new BlockItem(Blocks.lightningGenerator.get(), new Properties().stacksTo(64)));
     public static final RegistryObject<BlockItem> lightningDynamo = ITEMS.register("lightning_dynamo", () -> new BlockItem(Blocks.lightningDynamo.get(), new Properties().stacksTo(64)));
     public static final RegistryObject<BlockItem> washer = ITEMS.register("washer", () -> new BlockItem(Blocks.washer.get(), new Properties().stacksTo(64)));
+    public static final RegistryObject<BlockItem> boiler = ITEMS.register("boiler", () -> new BlockItem(Blocks.boiler.get(), new Properties().stacksTo(64)));
 
     public static final RegistryObject<Item> lightningCharge = ITEMS.register("lightning_charge", () -> new Item(new Properties().stacksTo(1).durability(250)));
     
@@ -41,8 +43,11 @@ public class Items {
                     output.accept(new ItemStack(lightningGenerator.get()));
                     output.accept(new ItemStack(lightningDynamo.get()));
                     output.accept(new ItemStack(washer.get()));
+                    output.accept(new ItemStack(boiler.get()));
 
                     output.accept(new ItemStack(lightningCharge.get()));
+
+                    output.accept(new ItemStack(Fluids.HOT_WATER_BUCKET.get()));
                 })
                 .build());
 

@@ -27,4 +27,8 @@ public class Menus {
         return IForgeMenuType.create((window, inv, data) -> new WasherMenu(window, inv.player, data.readBlockPos()));
     });
 
+    public static final RegistryObject<MenuType<BoilerMenu>> boiler = MENUS.register("boiler", () -> {
+        return IForgeMenuType.create((window, inv, data) -> new BoilerMenu(window, inv.player, data.readBlockPos()));
+    });
+
 }
