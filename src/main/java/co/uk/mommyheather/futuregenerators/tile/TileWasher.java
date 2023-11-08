@@ -143,32 +143,38 @@ public class TileWasher extends BlockEntity {
 
         washer.ticks++;
         if (washer.canProcess() && (washer.ticks % FutureGeneratorsConfig.SERVER.washerProcessTime.get() == 0)) {
-            washer.removeCobble();
-            washer.tank.drain(FutureGeneratorsConfig.SERVER.washerWaterConsumption.get(), FluidAction.EXECUTE);
-            washer.battery.setEnergy(washer.battery.getEnergyStored() - FutureGeneratorsConfig.SERVER.washerPowerConsumption.get());
-
-            for (ItemStack stack : drops.keySet()) {
-                float f = drops.get(stack);
-                float c = level.random.nextFloat();
-                if (f >= c) {
-                    ItemStack insert = stack.copy();
-
-                    for (int i=3;i<washer.items.getSlots();i++) {
-                        ItemStack slot = washer.items.getStackInSlot(i);
-                        if (slot.isEmpty()) {
-                            washer.items.setStackInSlot(i, insert);
-                            break;
-                        }
-                        else {
-                            if (ItemStack.isSameItem(insert, slot) && slot.getCount() < 64) {
-                                slot.setCount(slot.getCount() + 1);
+            for(int i=0;i<3;i++) {
+                if (washer.items.getStackInSlot(i).isEmpty()) continue;
+                if (!washer.canProcess()) return; //we're either out of water or completely out of cobble. just skip
+                washer.items.getStackInSlot(i).setCount(washer.items.getStackInSlot(i).getCount() - 1);           
+                
+                washer.tank.drain(FutureGeneratorsConfig.SERVER.washerWaterConsumption.get(), FluidAction.EXECUTE);
+                washer.battery.setEnergy(washer.battery.getEnergyStored() - FutureGeneratorsConfig.SERVER.washerPowerConsumption.get());
+    
+                for (ItemStack stack : drops.keySet()) {
+                    float f = drops.get(stack);
+                    float c = level.random.nextFloat();
+                    if (f >= c) {
+                        ItemStack insert = stack.copy();
+    
+                        for (int j=3;j<washer.items.getSlots();j++) {
+                            ItemStack slot = washer.items.getStackInSlot(j);
+                            if (slot.isEmpty()) {
+                                washer.items.setStackInSlot(j, insert);
                                 break;
-                            } 
+                            }
+                            else {
+                                if (ItemStack.isSameItem(insert, slot) && slot.getCount() < 64) {
+                                    slot.setCount(slot.getCount() + 1);
+                                    break;
+                                } 
+                            }
                         }
+    
                     }
-
                 }
             }
+
         }
 
     }
@@ -210,11 +216,5 @@ public class TileWasher extends BlockEntity {
                 items.getStackInSlot(2).getCount() > 0
             );
     }
-
     
-    public void removeCobble() {
-        if (items.getStackInSlot(0).getCount() > 0) items.getStackInSlot(0).setCount(items.getStackInSlot(0).getCount() - 1);
-        else if (items.getStackInSlot(1).getCount() > 0) items.getStackInSlot(1).setCount(items.getStackInSlot(1).getCount() - 1);
-        else if (items.getStackInSlot(2).getCount() > 0) items.getStackInSlot(2).setCount(items.getStackInSlot(2).getCount() - 1);
-    }
 }
