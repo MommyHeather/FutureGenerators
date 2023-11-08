@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
+import co.uk.mommyheather.futuregenerators.fluids.Fluids;
 import co.uk.mommyheather.futuregenerators.util.FutureGeneratorsEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,11 +15,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
@@ -81,7 +82,7 @@ public class TileWasher extends BlockEntity {
         super(Tiles.washer.get(), p_155229_, p_155230_);
 
         tank = new FluidTank(0, (stack) -> {
-            return stack.getFluid().isSame(Fluids.WATER);
+            return stack.getFluid().isSame(Fluids.HOT_WATER.get());
         }) {
             @Override
             protected void onContentsChanged()
@@ -186,6 +187,10 @@ public class TileWasher extends BlockEntity {
         super.load(tag);
         if (tag.contains("tank")) {
             tank.readFromNBT(tag.getCompound("tank"));
+        }
+        if (!tank.getFluid().getFluid().isSame(Fluids.HOT_WATER.get())) {
+            //convert water into hot water
+            tank.setFluid(new FluidStack(Fluids.HOT_WATER.get(), tank.getFluidAmount()));
         }
         if (tag.contains("battery")) {
             battery.deserializeNBT(tag.get("battery"));
