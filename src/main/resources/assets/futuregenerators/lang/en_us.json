@@ -3,8 +3,12 @@
     "block.futuregenerators.lightning_generator" : "Lightning Generator",
     "block.futuregenerators.lightning_dynamo" : "Lightning Dynamo",
     "block.futuregenerators.washer" : "Washer",
+    "block.futuregenerators.boiler" : "Boiler",
 
     "item.futuregenerators.lightning_charge" : "Lightning Charge",
+    "item.futuregenerators.hot_water_bucket" : "Hot Water Bucket",
+
+    "fluid_type.futuregenerators.hot_water" : "Hot Water",
 
     "futuregenerators.creativetab" : "Future Generators",
 
@@ -12,11 +16,13 @@
     "futuregenerators.ui.lightning_generator" : "Lightning Generator",
     "futuregenerators.ui.lightning_dynamo" : "Lightning Dynamo",
     "futuregenerators.ui.washer" : "Washer",
+    "futuregenerators.ui.boiler" : "Boiler",
 
     "futuregenerators.ui.speed" : "Speed: %1$s mb/t",
     "futuregenerators.ui.production" : "Producing: %1$s FE/t",
     "futuregenerators.ui.has_rod" : "Lightning Rod present.",
     "futuregenerators.ui.no_rod" : "No Lightning Rod!",
     "futuregenerators.ui.dynamos" : "Dynamos: %1$s",
-    "futuregenerators.ui.generators" : "Generators: %1$s"
+    "futuregenerators.ui.generators" : "Generators: %1$s",
+    "futuregenerators.ui.burn_time" : "Fuel Time Remaining: %1$s"
 }
