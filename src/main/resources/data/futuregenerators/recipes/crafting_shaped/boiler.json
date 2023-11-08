@@ -1,0 +1,29 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "III",
+        "WCW",
+        "SFS"
+    ],
+    "key": {
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        },
+        "C": {
+            "item": "minecraft:coal"
+        },
+        "S": {
+            "item": "minecraft:stone"
+        },
+        "F": {
+            "item": "minecraft:furnace"
+        }
+    },
+    "result": {
+        "item": "futuregenerators:boiler",
+        "count": 1
+    }
+}
