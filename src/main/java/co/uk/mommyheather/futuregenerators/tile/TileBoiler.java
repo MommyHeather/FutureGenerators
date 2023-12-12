@@ -114,8 +114,11 @@ public class TileBoiler extends BlockEntity {
         }
         else {
             boiler.fuelRemaining--; // burns fuel
-            boiler.tank.drainIntake(FutureGeneratorsConfig.SERVER.boilerHeatingRate.get());
-            boiler.tank.fillOutput(new FluidStack(co.uk.mommyheather.futuregenerators.fluids.Fluids.HOT_WATER.get(), FutureGeneratorsConfig.SERVER.boilerHeatingRate.get()));
+            if (boiler.tank.inTank.getFluidAmount() >= FutureGeneratorsConfig.SERVER.boilerHeatingRate.get()) {
+                boiler.tank.drainIntake(FutureGeneratorsConfig.SERVER.boilerHeatingRate.get());
+                boiler.tank.fillOutput(new FluidStack(co.uk.mommyheather.futuregenerators.fluids.Fluids.HOT_WATER.get(), FutureGeneratorsConfig.SERVER.boilerHeatingRate.get()));
+
+            }
         }
 
         if (boiler.ticks % 6 == 0 || boiler.fuelRemaining > 0) {
