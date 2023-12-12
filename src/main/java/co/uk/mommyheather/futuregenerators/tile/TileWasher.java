@@ -46,12 +46,13 @@ public class TileWasher extends BlockEntity {
         drops.put(new ItemStack(Items.IRON_NUGGET), 0.15F);
         drops.put(new ItemStack(Items.GOLD_NUGGET), 0.15F);
         drops.put(new ItemStack(Items.IRON_ORE), 0.1F);
+        drops.put(new ItemStack(Items.COPPER_ORE), 0.01F);
         drops.put(new ItemStack(Items.GOLD_ORE), 0.1F);
         drops.put(new ItemStack(Items.QUARTZ), 0.05F);
-        drops.put(new ItemStack(Items.LAPIS_LAZULI), 0.05F);
-        drops.put(new ItemStack(Items.REDSTONE), 0.05F);
-        drops.put(new ItemStack(Items.DIAMOND), 0.015F);
+        drops.put(new ItemStack(Items.LAPIS_ORE), 0.05F);
+        drops.put(new ItemStack(Items.REDSTONE_ORE), 0.05F);
         drops.put(new ItemStack(Items.ENDER_PEARL), 0.015F);
+        drops.put(new ItemStack(Items.DIAMOND_ORE), 0.01F);
         drops.put(new ItemStack(Items.NETHERITE_SCRAP), 0.001F);
     }
 
