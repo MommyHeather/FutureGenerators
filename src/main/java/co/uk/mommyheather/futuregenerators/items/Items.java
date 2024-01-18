@@ -30,6 +30,7 @@ public class Items {
     public static final RegistryObject<BlockItem> lightningDynamo = ITEMS.register("lightning_dynamo", () -> new BlockItem(Blocks.lightningDynamo.get(), new Properties().stacksTo(64)));
     public static final RegistryObject<BlockItem> washer = ITEMS.register("washer", () -> new BlockItem(Blocks.washer.get(), new Properties().stacksTo(64)));
     public static final RegistryObject<BlockItem> boiler = ITEMS.register("boiler", () -> new BlockItem(Blocks.boiler.get(), new Properties().stacksTo(64)));
+    public static final RegistryObject<BlockItem> fluidTank = ITEMS.register("tank", () -> new BlockItem(Blocks.fluidTank.get(), new Properties().stacksTo(64)));
 
     public static final RegistryObject<Item> lightningCharge = ITEMS.register("lightning_charge", () -> new Item(new Properties().stacksTo(1).durability(250)));
     
@@ -44,6 +45,7 @@ public class Items {
                     output.accept(new ItemStack(lightningDynamo.get()));
                     output.accept(new ItemStack(washer.get()));
                     output.accept(new ItemStack(boiler.get()));
+                    output.accept(new ItemStack(fluidTank.get()));
 
                     output.accept(new ItemStack(lightningCharge.get()));
 

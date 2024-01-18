@@ -6,9 +6,11 @@ import co.uk.mommyheather.futuregenerators.blocks.Blocks;
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import co.uk.mommyheather.futuregenerators.fluids.Fluids;
 import co.uk.mommyheather.futuregenerators.items.Items;
+import co.uk.mommyheather.futuregenerators.render.FluidTankRenderer;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
 import net.minecraft.world.level.storage.LevelResource;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -41,6 +43,7 @@ public class FutureGenerators
         Menus.MENUS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(Items::onCreativeModeTabRegister);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onRegisterRenderers);
 
     }
 
@@ -71,6 +74,10 @@ public class FutureGenerators
     @SubscribeEvent
     public void registerCommands(RegisterCommandsEvent event){
         
+    }
+
+    public void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(Tiles.fluidTank.get(), FluidTankRenderer::new);
     }
 
 }

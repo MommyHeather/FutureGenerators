@@ -40,6 +40,8 @@ public class FutureGeneratorsConfig {
         public final ForgeConfigSpec.ConfigValue<Integer> boilerWaterCapacity;
         public final ForgeConfigSpec.ConfigValue<Integer> boilerHeatingRate;
 
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidTankCapacity;
+
         public Server(ForgeConfigSpec.Builder builder) {
 
             
@@ -84,6 +86,13 @@ public class FutureGeneratorsConfig {
             washerWaterCapacity = builder.comment("How much water the washer can hold.").defineInRange("washerWaterCapacity", 10000, 1000, Integer.MAX_VALUE);
             washerWaterConsumption = builder.comment("How much water is consumed per cobblestone 'washed'.").defineInRange("washerWaterConsumption", 250, 1, Integer.MAX_VALUE);
             washerProcessTime = builder.comment("How many ticks it takes to 'wash' a single block of cobblestone.").defineInRange("washerProcessTime", 5, 1, Integer.MAX_VALUE);
+
+            builder.pop();
+
+
+            builder.push("Tank");
+
+            fluidTankCapacity = builder.comment("How much fluid the tank can store.").defineInRange("fluidTankCapacity", 100000, 1000, Integer.MAX_VALUE);
 
             builder.pop();
 
