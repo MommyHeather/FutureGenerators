@@ -2,6 +2,7 @@ package co.uk.mommyheather.futuregenerators.util;
 
 import co.uk.mommyheather.futuregenerators.FutureGenerators;
 import co.uk.mommyheather.futuregenerators.ui.BoilerScreen;
+import co.uk.mommyheather.futuregenerators.ui.FluidTankScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningDynamoScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorScreen;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
@@ -25,6 +26,7 @@ public class ClientSetup {
             MenuScreens.register(Menus.lightningDynamo.get(), LightningDynamoScreen::new);
             MenuScreens.register(Menus.washer.get(), WasherScreen::new);
             MenuScreens.register(Menus.boiler.get(), BoilerScreen::new);
+            MenuScreens.register(Menus.fluidTank.get(), FluidTankScreen::new);
         });
     }
 
