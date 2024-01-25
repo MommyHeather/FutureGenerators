@@ -4,7 +4,9 @@ import javax.annotation.Nullable;
 
 import co.uk.mommyheather.futuregenerators.tile.TileFluidTank;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
+import co.uk.mommyheather.futuregenerators.ui.FluidTankMenu;
 import co.uk.mommyheather.futuregenerators.ui.TurbineMenu;
+import co.uk.mommyheather.futuregenerators.util.TransferUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,6 +16,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -50,6 +53,13 @@ public class BlockFluidTank extends Block implements EntityBlock {
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof TileFluidTank) {
+                if (!player.isShiftKeyDown()) {
+                    ItemStack stack = player.getItemInHand(hand);
+                    if (!stack.isEmpty() && TransferUtils.handleFluidInteraction(player, hand, stack, ((TileFluidTank) be).tank)) {
+                        player.getInventory().setChanged();
+                        return InteractionResult.SUCCESS;
+                    }
+                }
                 MenuProvider containerProvider = new MenuProvider() {
                     @Override
                     public Component getDisplayName() {
@@ -58,7 +68,7 @@ public class BlockFluidTank extends Block implements EntityBlock {
                     
                     @Override
                     public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player playerEntity) {
-                        return new TurbineMenu(windowId, playerEntity, pos);
+                        return new FluidTankMenu(windowId, playerEntity, pos);
                     }
                 };
                 NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());
