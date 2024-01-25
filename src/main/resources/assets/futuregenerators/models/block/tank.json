@@ -43,6 +43,10 @@
                 "south": { "texture": "#north"},
                 "west":  { "texture": "#east"},
                 "east":  { "texture": "#west"}
+            },
+            "forge_data": {
+                "block_light": 7,
+                "sky_light": 7
             }
         }
     ]
