@@ -4,6 +4,7 @@
     "block.futuregenerators.lightning_dynamo" : "Lightning Dynamo",
     "block.futuregenerators.washer" : "Washer",
     "block.futuregenerators.boiler" : "Boiler",
+    "block.futuregenerators.tank" : "Fluid Tank",
 
     "item.futuregenerators.lightning_charge" : "Lightning Charge",
     "item.futuregenerators.hot_water_bucket" : "Hot Water Bucket",
@@ -17,6 +18,10 @@
     "futuregenerators.ui.lightning_dynamo" : "Lightning Dynamo",
     "futuregenerators.ui.washer" : "Washer",
     "futuregenerators.ui.boiler" : "Boiler",
+    "futuregenerators.ui.tank" : "Fluid Tank",
+
+    
+    "futuregenerators.ui.empty" : "Empty",
 
     "futuregenerators.ui.speed" : "Speed: %1$s mb/t",
     "futuregenerators.ui.production" : "Producing: %1$s FE/t",
