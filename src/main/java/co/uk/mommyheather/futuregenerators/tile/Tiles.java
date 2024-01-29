@@ -18,5 +18,6 @@ public class Tiles {
     public static final RegistryObject<BlockEntityType<TileWasher>> washer = TILES.register("washer", () -> BlockEntityType.Builder.of(TileWasher::new, Blocks.washer.get()).build(null));
     public static final RegistryObject<BlockEntityType<TileBoiler>> boiler = TILES.register("boiler", () -> BlockEntityType.Builder.of(TileBoiler::new, Blocks.boiler.get()).build(null));
     public static final RegistryObject<BlockEntityType<TileFluidTank>> fluidTank = TILES.register("tank", () -> BlockEntityType.Builder.of(TileFluidTank::new, Blocks.fluidTank.get()).build(null));
+    public static final RegistryObject<BlockEntityType<TilePump>> pump = TILES.register("pump", () -> BlockEntityType.Builder.of(TilePump::new, Blocks.pump.get()).build(null));
 
 }

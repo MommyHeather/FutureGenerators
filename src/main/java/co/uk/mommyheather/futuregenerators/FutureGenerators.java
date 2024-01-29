@@ -7,6 +7,7 @@ import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import co.uk.mommyheather.futuregenerators.fluids.Fluids;
 import co.uk.mommyheather.futuregenerators.items.Items;
 import co.uk.mommyheather.futuregenerators.render.FluidTankRenderer;
+import co.uk.mommyheather.futuregenerators.render.PumpRenderer;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
 import net.minecraft.world.level.storage.LevelResource;
@@ -78,6 +79,7 @@ public class FutureGenerators
 
     public void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(Tiles.fluidTank.get(), FluidTankRenderer::new);
+        event.registerBlockEntityRenderer(Tiles.pump.get(), PumpRenderer::new);
     }
 
 }

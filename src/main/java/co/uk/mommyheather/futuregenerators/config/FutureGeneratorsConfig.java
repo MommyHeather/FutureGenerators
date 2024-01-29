@@ -42,6 +42,14 @@ public class FutureGeneratorsConfig {
 
         public final ForgeConfigSpec.ConfigValue<Integer> fluidTankCapacity;
 
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPumpCapacity;
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPumpRange;
+        public final ForgeConfigSpec.ConfigValue<Boolean> drainWater;
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPumpConsumption;
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPumpBattery;
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPumpConversion;
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPumpTime;
+
         public Server(ForgeConfigSpec.Builder builder) {
 
             
@@ -93,6 +101,19 @@ public class FutureGeneratorsConfig {
             builder.push("Tank");
 
             fluidTankCapacity = builder.comment("How much fluid the tank can store.").defineInRange("fluidTankCapacity", 100000, 1000, Integer.MAX_VALUE);
+
+            builder.pop();
+
+
+            builder.push("Pump");
+
+            fluidPumpCapacity = builder.comment("How much fluid the pump can store.").defineInRange("pumpFluidCapacity", 10000, 1000, Integer.MAX_VALUE);
+            fluidPumpRange = builder.comment("The search range for the pump. Higher values perform worse.").defineInRange("pumpRange", 32, 1, 512);
+            drainWater = builder.comment("Whether or not the fluid pump should drain water. Pumps infinitely if disabled.").define("pumpDrainsWater", false);
+            fluidPumpConsumption = builder.comment("The power consumption of the fluid pump per block pumped. Must be lower than the capacity!").defineInRange("pumpPowerConsumption", 500, 0, Integer.MAX_VALUE);
+            fluidPumpBattery = builder.comment("The power capacity of the fluid pump.").defineInRange("pumpPowerCapacity", 10000, 1000, Integer.MAX_VALUE);
+            fluidPumpConversion = builder.comment("The power conversion per coal / charcoal inserted into the pump.").defineInRange("pumpPowerConversion", 500, 1, Integer.MAX_VALUE);
+            fluidPumpTime = builder.comment("How frequently the pump can operate. 1 = every tick!").defineInRange("pumpOperationTime", 5, 1, Integer.MAX_VALUE);
 
             builder.pop();
 
