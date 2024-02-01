@@ -9,6 +9,7 @@ import co.uk.mommyheather.futuregenerators.util.TransferUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -79,6 +80,18 @@ public class BlockPump extends Block implements EntityBlock {
     @Override     
     public VoxelShape getVisualShape(BlockState p_48735_, BlockGetter p_48736_, BlockPos p_48737_, CollisionContext p_48738_) {
         return super.getVisualShape(p_48735_, p_48736_, p_48737_, p_48738_);
+    }
+
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean p_51542_) {
+        if (!state.is(oldState.getBlock())) {
+            TilePump pump = (TilePump) level.getBlockEntity(pos);
+            for (int i=0; i<pump.items.getSlots();i++) {
+                if (!pump.items.getStackInSlot(i).isEmpty()) {
+                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), pump.items.getStackInSlot(i));
+                }
+            }
+        }
+        super.onRemove(state, level, pos, oldState, p_51542_);
     }
     
 }
