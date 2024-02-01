@@ -6,6 +6,7 @@ import co.uk.mommyheather.futuregenerators.ui.FluidTankScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningDynamoScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorScreen;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
+import co.uk.mommyheather.futuregenerators.ui.PumpScreen;
 import co.uk.mommyheather.futuregenerators.ui.TurbineScreen;
 import co.uk.mommyheather.futuregenerators.ui.WasherScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -27,6 +28,7 @@ public class ClientSetup {
             MenuScreens.register(Menus.washer.get(), WasherScreen::new);
             MenuScreens.register(Menus.boiler.get(), BoilerScreen::new);
             MenuScreens.register(Menus.fluidTank.get(), FluidTankScreen::new);
+            MenuScreens.register(Menus.pump.get(), PumpScreen::new);
         });
     }
 

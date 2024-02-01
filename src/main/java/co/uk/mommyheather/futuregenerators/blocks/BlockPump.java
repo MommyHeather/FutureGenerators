@@ -2,11 +2,9 @@ package co.uk.mommyheather.futuregenerators.blocks;
 
 import javax.annotation.Nullable;
 
-import co.uk.mommyheather.futuregenerators.tile.TileFluidTank;
 import co.uk.mommyheather.futuregenerators.tile.TilePump;
 import co.uk.mommyheather.futuregenerators.tile.Tiles;
-import co.uk.mommyheather.futuregenerators.ui.FluidTankMenu;
-import co.uk.mommyheather.futuregenerators.ui.TurbineMenu;
+import co.uk.mommyheather.futuregenerators.ui.PumpMenu;
 import co.uk.mommyheather.futuregenerators.util.TransferUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -61,7 +59,7 @@ public class BlockPump extends Block implements EntityBlock {
                         return InteractionResult.SUCCESS;
                     }
                 }
-                /*MenuProvider containerProvider = new MenuProvider() {
+                MenuProvider containerProvider = new MenuProvider() {
                     @Override
                     public Component getDisplayName() {
                         return Component.translatable("futuregenerators.ui.pump");
@@ -72,7 +70,7 @@ public class BlockPump extends Block implements EntityBlock {
                         return new PumpMenu(windowId, playerEntity, pos);
                     }
                 };
-                NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());*/
+                NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());
             }
         }
         return InteractionResult.SUCCESS;

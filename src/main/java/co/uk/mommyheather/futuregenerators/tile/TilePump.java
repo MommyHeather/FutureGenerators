@@ -2,6 +2,8 @@ package co.uk.mommyheather.futuregenerators.tile;
 
 import java.util.ArrayList;
 
+import org.jetbrains.annotations.NotNull;
+
 import co.uk.mommyheather.futuregenerators.config.FutureGeneratorsConfig;
 import co.uk.mommyheather.futuregenerators.util.FutureGeneratorsEnergyStorage;
 import net.minecraft.core.BlockPos;
@@ -14,14 +16,16 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.EmptyFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -30,6 +34,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class TilePump extends BlockEntity {
@@ -37,14 +43,16 @@ public class TilePump extends BlockEntity {
 
     public FluidTank tank;
     public FutureGeneratorsEnergyStorage battery;
+    public ItemStackHandler items;
 
     private LazyOptional<IFluidHandler> lazyTank;
     private LazyOptional<IEnergyStorage> lazyBattery;
+    private LazyOptional<IItemHandler> lazyItems;
 
     private boolean ticked = false;
 
     private ArrayList<BlockPos> pumpedBlocks = new ArrayList<>();
-    private Fluid lastPumped;
+    public Fluid lastPumped = Fluids.EMPTY;
 
     private int ticks = 0;
 
@@ -53,6 +61,9 @@ public class TilePump extends BlockEntity {
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+            return lazyItems.cast();
+        }
         if (cap == ForgeCapabilities.FLUID_HANDLER) {
             return lazyTank.cast();
         }
@@ -67,6 +78,7 @@ public class TilePump extends BlockEntity {
         super.invalidateCaps();
         lazyTank.invalidate();
         lazyBattery.invalidate();
+        lazyItems.invalidate();
     }
 
 
@@ -88,10 +100,24 @@ public class TilePump extends BlockEntity {
             }
             
         };
+        
+        items = new ItemStackHandler(1) {          
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack)
+            {
+                return ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) > 0 && !stack.hasCraftingRemainingItem();
+            }
+            
+            @Override
+            public void onContentsChanged(int slot) {
+                setChanged();
+            }
+        };
 
 
         lazyTank = LazyOptional.of(() -> tank);
         lazyBattery = LazyOptional.of(() -> battery);
+        lazyItems = LazyOptional.of(() -> items);
     }
 
     @Override
@@ -131,6 +157,7 @@ public class TilePump extends BlockEntity {
 
     public void drain() {
         if (pumpedBlocks.isEmpty()) {
+            lastPumped = Fluids.EMPTY;
 
             if (isDrainable(worldPosition.below())) {
                 if(drain(worldPosition.below(), true)) pumpedBlocks.add(worldPosition.below());
@@ -178,7 +205,7 @@ public class TilePump extends BlockEntity {
         //We can't pump nothingness!
         if (state.isEmpty()) return false;
         //Different fluid to what we last pumped - only pump the same fluid!
-        if (!state.is(lastPumped) && lastPumped != null) return false;
+        if (!state.is(lastPumped) && !lastPumped.isSame(Fluids.EMPTY)) return false;
         //We only pump source blocks!
         if (!state.isSource()) return false;
         //Is it within the defined range?
@@ -202,7 +229,11 @@ public class TilePump extends BlockEntity {
     }
 
     public void handlePowerConversion() {
-
+        if (items.getStackInSlot(0).isEmpty()) return;
+        int toInsert = (int) (ForgeHooks.getBurnTime(items.getStackInSlot(0).copyWithCount(1), RecipeType.SMELTING) * FutureGeneratorsConfig.SERVER.fluidPumpConversion.get());
+        if (battery.getMaxEnergyStored() - battery.getEnergyStored() < toInsert) return;
+        battery.receiveEnergy(toInsert, false);
+        items.extractItem(0, 1, false);
     }
 
     
@@ -210,6 +241,8 @@ public class TilePump extends BlockEntity {
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.put("tank", tank.writeToNBT(new CompoundTag()));
+        tag.put("battery", battery.serializeNBT());
+        tag.put("items", items.serializeNBT());
 
         ListTag blocks = new ListTag();
         for (BlockPos blockPos : pumpedBlocks) {
@@ -226,6 +259,13 @@ public class TilePump extends BlockEntity {
         super.load(tag);
         if (tag.contains("tank")) {
             tank.readFromNBT(tag.getCompound("tank"));
+        }
+        if (tag.contains("battery")) {
+            battery.deserializeNBT(tag.get("battery"));
+        }
+
+        if (tag.contains("items")) {
+            items.deserializeNBT(tag.getCompound("items"));
         }
 
         if (tag.contains("pumpedCache")) {
@@ -245,6 +285,8 @@ public class TilePump extends BlockEntity {
         CompoundTag tag = new CompoundTag();
         
         tag.put("tank", tank.writeToNBT(new CompoundTag()));
+        tag.put("battery", battery.serializeNBT());
+        tag.putString("fluid", ForgeRegistries.FLUIDS.getKey(lastPumped).toString());
         
         return tag;
     }
@@ -253,6 +295,13 @@ public class TilePump extends BlockEntity {
     public void handleUpdateTag(CompoundTag tag) {
         if (tag.contains("tank")) {
             tank.readFromNBT(tag.getCompound("tank"));
+        }
+        if (tag.contains("battery")) {
+            battery.deserializeNBT(tag.get("battery"));
+        }
+
+        if (tag.contains("fluid")) {
+            lastPumped = ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tag.getString("fluid")));
         }
     }
     

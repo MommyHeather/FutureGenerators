@@ -35,4 +35,8 @@ public class Menus {
         return IForgeMenuType.create((window, inv, data) -> new FluidTankMenu(window, inv.player, data.readBlockPos()));
     });
 
+    public static final RegistryObject<MenuType<PumpMenu>> pump = MENUS.register("pump", () -> {
+        return IForgeMenuType.create((window, inv, data) -> new PumpMenu(window, inv.player, data.readBlockPos()));
+    });
+
 }
