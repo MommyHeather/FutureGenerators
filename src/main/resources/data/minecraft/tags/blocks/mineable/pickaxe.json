@@ -5,6 +5,8 @@
         "futuregenerators:washer",
         "futuregenerators:lightning_dynamo",
         "futuregenerators:lightning_generator",
-        "futuregenerators:boiler"
+        "futuregenerators:boiler",
+        "futuregenerators:pump",
+        "futuregenerators:tank"
     ]
-  }
+}
