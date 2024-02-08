@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "futuregenerators:block/fluid_pipe",
+		"1_0": "futuregenerators:block/fluid_pipe"
+	},
+	"elements": [
+		{
+			"name": "Stopper",
+			"from": [6, 4.5, 6],
+			"to": [10, 6.5, 10],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [3, 9, 5, 13], "rotation": 90, "texture": "#1_0"},
+				"east": {"uv": [3, 3, 7, 5], "texture": "#1_0"},
+				"south": {"uv": [5, 9, 3, 13], "rotation": 270, "texture": "#1_0"},
+				"west": {"uv": [3, 3, 7, 5], "rotation": 180, "texture": "#1_0"},
+				"up": {"uv": [3, 5, 7, 9], "rotation": 270, "texture": "#1_0"},
+				"down": {"uv": [7, 5, 11, 9], "rotation": 270, "texture": "#1_0"}
+			}
+		}
+	]
+}

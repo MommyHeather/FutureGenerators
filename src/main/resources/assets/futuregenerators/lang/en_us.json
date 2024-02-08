@@ -32,5 +32,9 @@
     "futuregenerators.ui.generators" : "Generators: %1$s",
     "futuregenerators.ui.burn_time" : "Fuel Time Remaining: %1$s",
     "futuregenerators.ui.pumping" : "Pumping: %1$s",
-    "futuregenerators.ui.pumping_nothing" : "Nothing to pump!"
+    "futuregenerators.ui.pumping_nothing" : "Nothing to pump!",
+
+
+    "futuregenerators.interactions.priority" : "Priority set to %1$s",
+    "futuregenerators.interactions.pulling" : "Pull mode set to %1$s"
 }

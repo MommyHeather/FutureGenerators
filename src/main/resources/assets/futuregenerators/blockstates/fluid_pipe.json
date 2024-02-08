@@ -1,0 +1,174 @@
+{
+    "multipart": [
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/base"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/north"
+            },
+            "when": {
+                "north": "true",
+                "pump_north" : "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/north_pump"
+            },
+            "when": {
+                "north": "true",
+                "pump_north" : "true"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/east"
+            },
+            "when": {
+                "east": "true",
+                "pump_east": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/east_pump"
+            },
+            "when": {
+                "east": "true",
+                "pump_east": "true"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/south"
+            },
+            "when": {
+                "south": "true",
+                "pump_south": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/south_pump"
+            },
+            "when": {
+                "south": "true",
+                "pump_south": "true"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/west"
+            },
+            "when": {
+                "west": "true",
+                "pump_west": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/west_pump"
+            },
+            "when": {
+                "west": "true",
+                "pump_west": "true"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/up"
+            },
+            "when": {
+                "up": "true",
+                "pump_up": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/up_pump"
+            },
+            "when": {
+                "up": "true",
+                "pump_up": "true"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/down"
+            },
+            "when": {
+                "down": "true",
+                "pump_down": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/connections/down_pump"
+            },
+            "when": {
+                "down": "true",
+                "pump_down": "true"
+            }
+        },
+
+
+
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/stoppers/north"
+            },
+            "when": {
+                "north": "false",
+                "hide_stoppers": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/stoppers/east"
+            },
+            "when": {
+                "east": "false",
+                "hide_stoppers": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/stoppers/south"
+            },
+            "when": {
+                "south": "false",
+                "hide_stoppers": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/stoppers/west"
+            },
+            "when": {
+                "west": "false",
+                "hide_stoppers": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/stoppers/up"
+            },
+            "when": {
+                "up": "false",
+                "hide_stoppers": "false"
+            }
+        },
+        {
+            "apply": {
+                "model": "futuregenerators:block/fluid_pipe/stoppers/down"
+            },
+            "when": {
+                "down": "false",
+                "hide_stoppers": "false"
+            }
+        }
+    ]
+}
