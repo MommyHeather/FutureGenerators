@@ -1,0 +1,20 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "   ",
+        "CBC",
+        "   "
+    ],
+    "key": {
+        "C": {
+            "item": "minecraft:copper_ingot"
+        },
+        "B": {
+            "item": "minecraft:iron_bars"
+        }
+    },
+    "result": {
+        "item": "futuregenerators:fluid_pipe",
+        "count": 16
+    }
+}
