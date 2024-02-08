@@ -5,6 +5,8 @@
     "block.futuregenerators.washer" : "Washer",
     "block.futuregenerators.boiler" : "Boiler",
     "block.futuregenerators.tank" : "Fluid Tank",
+    "block.futuregenerators.pump" : "Fluid Pump",
+    "block.futuregenerators.fluid_pipe" : "Fluid Pipe",
 
     "item.futuregenerators.lightning_charge" : "Lightning Charge",
     "item.futuregenerators.hot_water_bucket" : "Hot Water Bucket",
