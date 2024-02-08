@@ -50,6 +50,9 @@ public class FutureGeneratorsConfig {
         public final ForgeConfigSpec.ConfigValue<Double> fluidPumpConversion;
         public final ForgeConfigSpec.ConfigValue<Integer> fluidPumpTime;
 
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPipeFrequency;
+        public final ForgeConfigSpec.ConfigValue<Integer> fluidPipeRate;
+
         public Server(ForgeConfigSpec.Builder builder) {
 
             
@@ -114,6 +117,14 @@ public class FutureGeneratorsConfig {
             fluidPumpBattery = builder.comment("The power capacity of the fluid pump.").defineInRange("pumpPowerCapacity", 10000, 1000, Integer.MAX_VALUE);
             fluidPumpConversion = builder.comment("The power conversion per tick of burn time the inserted fuel has. The resulting power is rounded to the nearest whole number!").defineInRange("pumpPowerConversion", 1D, 0.001D, Double.MAX_VALUE);
             fluidPumpTime = builder.comment("How frequently the pump can operate. 1 = every tick!").defineInRange("pumpOperationTime", 5, 1, Integer.MAX_VALUE);
+
+            builder.pop();
+
+
+            builder.push("Pipe");
+
+            fluidPipeFrequency = builder.comment("How often pipes can pull from inventories. 1 = every tick!").defineInRange("fluidPipeFrequency", 5, 1, Integer.MAX_VALUE);
+            fluidPipeRate = builder.comment("How much fluid a pipe will pull with each operation.").defineInRange("fluidPipeRate", 1000, 1, Integer.MAX_VALUE);
 
             builder.pop();
 
