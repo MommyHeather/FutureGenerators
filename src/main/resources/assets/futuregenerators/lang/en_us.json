@@ -1,5 +1,7 @@
 { 
     "block.futuregenerators.turbine" : "Water Turbine",
+    "block.futuregenerators.turbine_controller" : "Turbine Controller",
+    "block.futuregenerators.turbine_casing" : "Turbine Casing",
     "block.futuregenerators.lightning_generator" : "Lightning Generator",
     "block.futuregenerators.lightning_dynamo" : "Lightning Dynamo",
     "block.futuregenerators.washer" : "Washer",

@@ -1,0 +1,20 @@
+{
+    "parent": "block/cube",
+	"display": {
+        "firstperson_righthand": {
+            "rotation": [ 0, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+    "textures": {
+        "up": "futuregenerators:block/turbine_controller_down",
+        "down": "futuregenerators:block/turbine_controller_down",
+        "side": "futuregenerators:block/turbine_controller",
+        "north": "#side",
+        "east": "#side",
+        "south": "#side",
+        "west": "#side",
+        "particle": "#side"
+    }
+}
