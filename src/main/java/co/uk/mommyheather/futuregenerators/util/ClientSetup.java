@@ -6,6 +6,7 @@ import co.uk.mommyheather.futuregenerators.ui.FluidTankScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningDynamoScreen;
 import co.uk.mommyheather.futuregenerators.ui.LightningGeneratorScreen;
 import co.uk.mommyheather.futuregenerators.ui.Menus;
+import co.uk.mommyheather.futuregenerators.ui.MultiblockTurbineScreen;
 import co.uk.mommyheather.futuregenerators.ui.PumpScreen;
 import co.uk.mommyheather.futuregenerators.ui.TurbineScreen;
 import co.uk.mommyheather.futuregenerators.ui.WasherScreen;
@@ -23,6 +24,7 @@ public class ClientSetup {
     public static void init(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             MenuScreens.register(Menus.turbine.get(), TurbineScreen::new);
+            MenuScreens.register(Menus.multiblockTurbine.get(), MultiblockTurbineScreen::new);
             MenuScreens.register(Menus.lightningGenerator.get(), LightningGeneratorScreen::new);
             MenuScreens.register(Menus.lightningDynamo.get(), LightningDynamoScreen::new);
             MenuScreens.register(Menus.washer.get(), WasherScreen::new);
