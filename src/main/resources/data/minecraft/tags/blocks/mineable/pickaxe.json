@@ -8,6 +8,8 @@
         "futuregenerators:boiler",
         "futuregenerators:pump",
         "futuregenerators:tank",
-        "futuregenerators:fluid_pipe"
+        "futuregenerators:fluid_pipe",
+        "futuregenerators:turbine_casing",
+        "futuregenerators:turbine_controller"
     ]
 }
