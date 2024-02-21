@@ -26,6 +26,8 @@ public class Items {
 
     
     public static final RegistryObject<BlockItem> turbine = ITEMS.register("turbine", () -> new BlockItem(Blocks.turbine.get(), new Properties().stacksTo(64)));
+    public static final RegistryObject<BlockItem> turbineController = ITEMS.register("turbine_controller", () -> new BlockItem(Blocks.turbineController.get(), new Properties().stacksTo(64)));
+    public static final RegistryObject<BlockItem> turbineCasing = ITEMS.register("turbine_casing", () -> new BlockItem(Blocks.turbineCasing.get(), new Properties().stacksTo(64)));
     public static final RegistryObject<BlockItem> lightningGenerator = ITEMS.register("lightning_generator", () -> new BlockItem(Blocks.lightningGenerator.get(), new Properties().stacksTo(64)));
     public static final RegistryObject<BlockItem> lightningDynamo = ITEMS.register("lightning_dynamo", () -> new BlockItem(Blocks.lightningDynamo.get(), new Properties().stacksTo(64)));
     public static final RegistryObject<BlockItem> washer = ITEMS.register("washer", () -> new BlockItem(Blocks.washer.get(), new Properties().stacksTo(64)));
@@ -43,6 +45,8 @@ public class Items {
                 .title(Component.translatable("futuregenerators.creativetab"))
                 .displayItems((params, output) -> {
                     output.accept(new ItemStack(turbine.get()));
+                    output.accept(new ItemStack(turbineController.get()));
+                    output.accept(new ItemStack(turbineCasing.get()));
                     output.accept(new ItemStack(lightningGenerator.get()));
                     output.accept(new ItemStack(lightningDynamo.get()));
                     output.accept(new ItemStack(washer.get()));
