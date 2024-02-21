@@ -40,5 +40,7 @@
 
 
     "futuregenerators.interactions.priority" : "Priority set to %1$s",
-    "futuregenerators.interactions.pulling" : "Pull mode set to %1$s"
+    "futuregenerators.interactions.pulling" : "Pull mode set to %1$s",
+
+    "futuregenerators.multiblock.turbine_not_enough_casings" : "Not enough casings for the turbine to form!"
 }
