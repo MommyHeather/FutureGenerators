@@ -24,6 +24,12 @@ public class FutureGeneratorsConfig {
         public final ForgeConfigSpec.ConfigValue<Integer> turbineWaterCapacity;
         public final ForgeConfigSpec.ConfigValue<Integer> turbinePowerCapacity;
 
+        public final ForgeConfigSpec.ConfigValue<Integer> multiblockTurbineMaxSpeed;
+        public final ForgeConfigSpec.ConfigValue<Integer> multiblockTurbineFeRatio;
+        public final ForgeConfigSpec.ConfigValue<Integer> multiblockTurbineSpinupTime;
+        public final ForgeConfigSpec.ConfigValue<Integer> multiblockTurbineWaterCapacity;
+        public final ForgeConfigSpec.ConfigValue<Integer> multiblockTurbinePowerCapacity;
+
         public final ForgeConfigSpec.ConfigValue<Integer> lightningGeneratorConsumption;
         public final ForgeConfigSpec.ConfigValue<Integer> lightningGeneratorCapacity;
 
@@ -71,6 +77,17 @@ public class FutureGeneratorsConfig {
             turbineSpinupTime = builder.comment("How long the turbine takes to spin up from still to max speed, in seconds.\nMinimum speed gain is 1 per tick / 20 per second!").defineInRange("turbineSpinupTime", 60, 0, Integer.MAX_VALUE);
             turbineWaterCapacity = builder.comment("How much water the turbine can hold.").defineInRange("turbineWaterCapacity", 10000, 1000, Integer.MAX_VALUE);
             turbinePowerCapacity = builder.comment("How much power the turbine can hold.").defineInRange("turbinePowerCapacity", 10000, 1000, Integer.MAX_VALUE);
+
+            builder.pop();
+
+
+            builder.push("MultiblockTurbine");
+
+            multiblockTurbineMaxSpeed = builder.comment("The max speed (mb/t consumption) the multiblock turbine can reach.").defineInRange("multiblockTurbineMaxSpeed", 1000, 1, Integer.MAX_VALUE);
+            multiblockTurbineFeRatio = builder.comment("How much FE the turbine makes for every mb of water it consumes.").defineInRange("multiblockTurbineFeRatio", 6, 1, Integer.MAX_VALUE);
+            multiblockTurbineSpinupTime = builder.comment("How long the turbine takes to spin up from still to max speed, in seconds.\nMinimum speed gain is 1 per tick / 20 per second!").defineInRange("multiblockTurbineSpinupTime", 100, 0, Integer.MAX_VALUE);
+            multiblockTurbineWaterCapacity = builder.comment("How much water the turbine can hold.").defineInRange("multiblockTurbineWaterCapacity", 50000, 1000, Integer.MAX_VALUE);
+            multiblockTurbinePowerCapacity = builder.comment("How much power the turbine can hold.").defineInRange("multiblockTurbinePowerCapacity", 50000, 1000, Integer.MAX_VALUE);
 
             builder.pop();
 
@@ -123,7 +140,7 @@ public class FutureGeneratorsConfig {
 
             builder.push("Pipe");
 
-            fluidPipeFrequency = builder.comment("How often pipes can pull from inventories. 1 = every tick!").defineInRange("fluidPipeFrequency", 5, 1, Integer.MAX_VALUE);
+            fluidPipeFrequency = builder.comment("How often pipes can pull from inventories. 1 = every tick!").defineInRange("fluidPipeFrequency", 3, 1, Integer.MAX_VALUE);
             fluidPipeRate = builder.comment("How much fluid a pipe will pull with each operation.").defineInRange("fluidPipeRate", 1000, 1, Integer.MAX_VALUE);
 
             builder.pop();
