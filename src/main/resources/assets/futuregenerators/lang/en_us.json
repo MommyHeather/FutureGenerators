@@ -10,7 +10,7 @@
     "block.futuregenerators.pump" : "Fluid Pump",
     "block.futuregenerators.fluid_pipe" : "Fluid Pipe",
 
-    "item.futuregenerators.lightning_charge" : "Lightning Charge",
+    "item.futuregenerators.lightning_charge" : "(Deprecated) Lightning Charge",
     "item.futuregenerators.hot_water_bucket" : "Hot Water Bucket",
 
     "fluid_type.futuregenerators.hot_water" : "Hot Water",
@@ -18,8 +18,8 @@
     "futuregenerators.creativetab" : "HydroCraft",
 
     "futuregenerators.ui.turbine" : "Water Turbine",
-    "futuregenerators.ui.lightning_generator" : "Lightning Generator",
-    "futuregenerators.ui.lightning_dynamo" : "Lightning Dynamo",
+    "futuregenerators.ui.lightning_generator" : "(Deprecated) Lightning Generator",
+    "futuregenerators.ui.lightning_dynamo" : "(Deprecated) Lightning Dynamo",
     "futuregenerators.ui.washer" : "Washer",
     "futuregenerators.ui.boiler" : "Boiler",
     "futuregenerators.ui.tank" : "Fluid Tank",
